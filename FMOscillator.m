@@ -30,7 +30,6 @@
         
         // EXTERNAL OUTPUTS ====================================================
 
-        //balls test
         
         //Use code below if not routing audio to other effects
         
