@@ -55,14 +55,14 @@
         
         // Instantiate Instruments
         fmOscillator = [[FMOscillator alloc]init];
-        variableDelay = [[VariableDelay alloc]initWithAudioSource:(AKStereoAudio*)fmOscillator.auxOutput];
+        //variableDelay = [[VariableDelay alloc]initWithAudioSource:(AKStereoAudio*)fmOscillator.auxOutput];
         
         // Add Instruments to the Orchestra
 
         [AKOrchestra addInstrument:fmOscillator];
-        [AKOrchestra addInstrument:variableDelay];
+        //[AKOrchestra addInstrument:variableDelay];
         
-        [variableDelay play];
+        //[variableDelay play];
         
     }
     return self;
