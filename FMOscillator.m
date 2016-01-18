@@ -34,14 +34,17 @@
         
         //Use code below if not routing audio to other effects
         
-        AKStereoAudio *output;
-        output = [[AKStereoAudio alloc]initWithLeftAudio:fmOscillator rightAudio:fmOscillator];
-        [self setAudioOutput:output];
+//        AKStereoAudio *output;
+//        output = [[AKStereoAudio alloc]initWithLeftAudio:fmOscillator rightAudio:fmOscillator];
+//        
+        
+        
+        //[self setAudioOutput:output];
     
         //define outputs available to others
 //        
-//        _auxOutput = [AKStereoAudio globalParameter];
-//        [self assignOutput:_auxOutput to:fmOscillator];
+        _auxOutput = [AKAudio globalParameter];
+        [self assignOutput:_auxOutput to:fmOscillator];
     
     }
     return self;

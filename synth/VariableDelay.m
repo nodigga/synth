@@ -50,9 +50,13 @@
         
         AKAudioOutput *audio = [[AKAudioOutput alloc]initWithLeftAudio:leftMix rightAudio:rightMix];
         [self connect:audio];
-        
-        
-        
+
+        _auxOutput = [AKStereoAudio globalParameter];
+        [self assignOutput:_auxOutput to:[[AKStereoAudio alloc] initWithLeftAudio:leftMix
+                                                                              rightAudio:rightMix]];
+
+                                                 
+         [self connect:audio];
     // Reset Inputs
         [self resetParameter:audioSource];
     }
