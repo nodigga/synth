@@ -70,11 +70,14 @@ BOOL inView;
     
     CGRect delaySliderFrame = CGRectMake(0,80, 100, 30);
     self.delaySlider = [[AKSlider alloc]initWithFrame:delaySliderFrame];
-    self.delaySlider.transform = trans;
+    //self.delaySlider.transform = trans;
     [self.delaySlider setBackgroundColor:[UIColor purpleColor]];
-    self.delaySlider.minimumValue = -100.0;
-    self.delaySlider.maximumValue = 0.0;
+    self.delaySlider.minimumValue = 0.0;
+    self.delaySlider.maximumValue = 100.0;
     self.delaySlider.continuous = YES;
+    [self.delaySlider addTarget:self action:@selector(setDelayTimeSlider:) forControlEvents:UIControlEventValueChanged];
+    
+    int sliderValue = self.delaySlider.value;
     
     [self.effectView addSubview:self.delaySlider];
     
@@ -165,18 +168,16 @@ BOOL inView;
         [UIView animateWithDuration:1.0 animations:^{self.effectView.frame = effectFrameOffScreen;}];
         inView = TRUE;
     }
-    
-    
 }
 
 
-
--(void)delaySliderValueChanged:(id)sender
+-(void)setDelayTimeSlider:(UISlider*)sender
 {
-
-    
-
-
+//    self.delaySlider.value = sender;
+//    
+    NSLog(@"%f", sender.value);
+   
+    [model setDelayTimeSlider:sender.value];
 }
 
 

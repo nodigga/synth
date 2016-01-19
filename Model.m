@@ -69,6 +69,10 @@
 }
 
 
+- (void)setDelayTimeSlider:(float)delayTime
+{
+    variableDelay.delayTime.value = delayTime;
+}
 
 
 -(void)octaveDelegate:(ViewController *)sender

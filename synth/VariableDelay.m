@@ -56,7 +56,7 @@
                                                                               rightAudio:rightMix]];
 
                                                  
-         [self connect:audio];
+         [self connect:audio];  //this needs to be placed on the last fx on the signal chain
     // Reset Inputs
         [self resetParameter:audioSource];
     }
