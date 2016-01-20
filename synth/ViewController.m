@@ -18,9 +18,10 @@
 Model *model;
 
 BOOL inView;
-    
+
 }
 
+@property(nonatomic, strong) UILabel *delaySliderLabel;
 
 @end
 
@@ -73,14 +74,17 @@ BOOL inView;
     //self.delaySlider.transform = trans;
     [self.delaySlider setBackgroundColor:[UIColor purpleColor]];
     self.delaySlider.minimumValue = 0.0;
-    self.delaySlider.maximumValue = 100.0;
+    self.delaySlider.maximumValue = 4.0;
     self.delaySlider.continuous = YES;
     [self.delaySlider addTarget:self action:@selector(setDelayTimeSlider:) forControlEvents:UIControlEventValueChanged];
     
-    int sliderValue = self.delaySlider.value;
     
+    CGRect delaySliderLabelFrame = CGRectMake(0, 40, 100, 30);
+    self.delaySliderLabel = [[UILabel alloc]initWithFrame:delaySliderLabelFrame];
     [self.effectView addSubview:self.delaySlider];
+    [self.effectView addSubview:self.delaySliderLabel];
     
+  
     
     
     // FX BUTTONS
@@ -177,6 +181,9 @@ BOOL inView;
 //    
     NSLog(@"%f", sender.value);
    
+    
+    self.delaySliderLabel.text = [@((float)sender.value) stringValue];
+    
     [model setDelayTimeSlider:sender.value];
 }
 
