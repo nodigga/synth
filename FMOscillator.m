@@ -27,6 +27,9 @@
         fmOscillator.carrierMultiplier = [_toneColor scaledBy:akp(20)];
         fmOscillator.modulatingMultiplier = [_toneColor scaledBy:akp(12)];
         fmOscillator.amplitude = [adsr scaledBy:akp(0.15)];
+    
+        
+       
         
         // EXTERNAL OUTPUTS ====================================================
 

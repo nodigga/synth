@@ -32,6 +32,7 @@
 
 @property(nonatomic, strong) AKSlider *delaySlider;
 
+
 @property(nonatomic, strong) KeyboardViewController *keyboardViewController;
 @property(nonatomic, strong) MoogLadderViewController *moogLadderViewController;
 @property(nonatomic, strong) ReverbViewController *reverbViewController;
@@ -42,9 +43,11 @@
 //INSTRUMENT PROPERTIES
 
 @property(nonatomic, strong) AKInstrumentProperty  *feedback, *mix, *time;
+@property(nonatomic, strong) AKSlider *attack, *decay, *sustain, *released;
 
 
-@property UIView *effectView;
+
+@property UIView *effectView, *moogLadderView, *reverbView;
 @property BOOL switchOn;
 
 

@@ -17,7 +17,7 @@
 {
 Model *model;
 
-BOOL inView;
+BOOL delayInView, moogLadderInView, reverbInView;
 
 }
 
@@ -34,28 +34,30 @@ BOOL inView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI_2);
-    
-    
+    //CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI_2);
     // Do any additional setup after loading the view, typically from a nib.
     
-    inView = TRUE;
+    delayInView = TRUE;
+    moogLadderInView = TRUE;
+    reverbInView = TRUE;
     
     model = [Model sharedModel];
 
     self.screenWidth = [UIScreen mainScreen].bounds.size.width;
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
-    
     self.view.backgroundColor = [UIColor blueColor];
    
     
-    // Views
+    // KEYBOARD VIEW
     
     CGRect keyboardFrame = CGRectMake(0, self.screenHeight/2, self.screenWidth, self.screenHeight/2);
     
     self.keyboardViewController = [[KeyboardViewController alloc]init];
     self.keyboardViewController.view.frame = keyboardFrame;
     self.keyboardViewController.view.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:self.keyboardViewController.view];
+    
+    //EFFECT VIEW
     
     CGRect effectFrame = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
     
@@ -63,9 +65,29 @@ BOOL inView;
     self.effectView.frame = effectFrame;
     self.effectView.backgroundColor = [UIColor greenColor];
    
-    [self.view addSubview:self.keyboardViewController.view];
     [self.view addSubview:self.effectView];
-    //[self.effectView setHidden:YES];
+    
+    //MOOGLADDER VIEW
+    
+    CGRect moogFrame = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+    
+    self.moogLadderView = [[UIView alloc] init];
+    self.moogLadderView.frame = moogFrame;
+    self.moogLadderView.backgroundColor = [UIColor orangeColor];
+    
+    [self.view addSubview:self.moogLadderView];
+    
+    
+    //REVERB VIEW
+    
+    CGRect reverbFrame = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+    
+    self.reverbView = [[UIView alloc] init];
+    self.reverbView.frame = reverbFrame;
+    self.reverbView.backgroundColor = [UIColor brownColor];
+    
+    [self.view addSubview:self.reverbView];
+    
     
     //AKProperty Sliders For Effect View
     
@@ -92,7 +114,7 @@ BOOL inView;
     //MOOGLADDER BUTTON
     self.moogLadderButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.moogLadderButton.frame = CGRectMake(10, 50, 100, 30);
-    [self.moogLadderButton addTarget:self action:@selector (showMoogLadder) forControlEvents:UIControlEventTouchUpInside];
+    [self.moogLadderButton addTarget:self action:@selector (showMoogLadderView) forControlEvents:UIControlEventTouchUpInside];
     [self.moogLadderButton setTitle:@"MoogLadderFilter" forState:UIControlStateNormal];
     [self.moogLadderButton setImage:[UIImage imageNamed:@"moogladder.png"] forState:UIControlStateNormal];
     [self.view addSubview:self.moogLadderButton];
@@ -100,7 +122,7 @@ BOOL inView;
     //REVERB BUTTON
     self.reverbButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.reverbButton.frame = CGRectMake (10, 150, 100, 30);
-    [self.reverbButton addTarget:self action:@selector(showReverb) forControlEvents:UIControlEventTouchUpInside];
+    [self.reverbButton addTarget:self action:@selector(showReverbView) forControlEvents:UIControlEventTouchUpInside];
     [self.reverbButton setTitle:@"Reverb" forState:UIControlStateNormal];
     [self.reverbButton setImage:[UIImage imageNamed:@"reverb.png"]forState:UIControlStateNormal];
     [self.view addSubview:self.reverbButton];
@@ -110,7 +132,7 @@ BOOL inView;
     self.delayButton.frame = CGRectMake(10, 100, 100, 30);
     [self.delayButton addTarget:self action:@selector(showEffectView) forControlEvents:UIControlEventTouchUpInside];
     [self.delayButton setTitle:@"delay" forState:UIControlStateNormal];
-    UIImage *reverb = [UIImage imageNamed:@"test.png"];
+    UIImage *reverb = [UIImage imageNamed:@"delay.png"];
     
     [self.delayButton setImage:reverb forState:UIControlStateNormal];
     
@@ -140,39 +162,65 @@ BOOL inView;
         self.switchOn = FALSE;
         model.frequencies = [model.octaveOne mutableCopy];
     }
-    
-    
-   // [self.delegate octaveDelegate:self];
 }
 
-//-(void)showEffectView
-//{
-//    if([self.effectView isHidden])
-//    {
-//        [self.effectView setHidden:NO];
-//    }
-//    else
-//    {
-//        [self.effectView setHidden:YES];
-//    }
-//}
+
 
 -(void)showEffectView
 {
   CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
   CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
    
-    if(inView)
+    if(delayInView)
     {
         [UIView animateWithDuration:1.0 animations:^{self.effectView.frame = effectFrame;}];
-        inView = FALSE;
+        delayInView = FALSE;
     }
     else
     {
         [UIView animateWithDuration:1.0 animations:^{self.effectView.frame = effectFrameOffScreen;}];
-        inView = TRUE;
+        delayInView = TRUE;
     }
 }
+
+-(void)showMoogLadderView
+{
+    CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
+    CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+    
+    if(moogLadderInView)
+    {
+        [UIView animateWithDuration:1.0 animations:^{self.moogLadderView.frame = effectFrame;}];
+        moogLadderInView = FALSE;
+    }
+    else
+    {
+        [UIView animateWithDuration:1.0 animations:^{self.moogLadderView.frame = effectFrameOffScreen;}];
+        moogLadderInView = TRUE;
+    }
+    
+}
+
+
+-(void)showReverbView
+{
+    CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
+    CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+    
+    if(reverbInView)
+    {
+        [UIView animateWithDuration:1.0 animations:^{self.reverbView.frame = effectFrame;}];
+        reverbInView = FALSE;
+    }
+    else
+    {
+        [UIView animateWithDuration:1.0 animations:^{self.reverbView.frame = effectFrameOffScreen;}];
+        reverbInView = TRUE;
+    }
+}
+
+
+
 
 
 -(void)setDelayTimeSlider:(UISlider*)sender
@@ -187,20 +235,20 @@ BOOL inView;
     [model setDelayTimeSlider:sender.value];
 }
 
-
-- (void)showMoogLadder
-{
-    self.moogLadderViewController = [[MoogLadderViewController alloc]init];
-    self.moogLadderViewController.view.backgroundColor = [UIColor orangeColor];
-    [self.navigationController pushViewController:self.moogLadderViewController animated:YES];
-}
-
-- (void)showReverb
-{
-    self.reverbViewController = [[ReverbViewController alloc]init];
-    self.reverbViewController.view.backgroundColor = [UIColor purpleColor];
-    [self.navigationController pushViewController:self.reverbViewController animated:YES];
-}
+//
+//- (void)showMoogLadder
+//{
+//    self.moogLadderViewController = [[MoogLadderViewController alloc]init];
+//    self.moogLadderViewController.view.backgroundColor = [UIColor orangeColor];
+//    [self.navigationController pushViewController:self.moogLadderViewController animated:YES];
+//}
+//
+//- (void)showReverb
+//{
+//    self.reverbViewController = [[ReverbViewController alloc]init];
+//    self.reverbViewController.view.backgroundColor = [UIColor purpleColor];
+//    [self.navigationController pushViewController:self.reverbViewController animated:YES];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
