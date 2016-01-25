@@ -107,6 +107,33 @@ BOOL delayInView, moogLadderInView, reverbInView;
     [self.effectView addSubview:self.delaySliderLabel];
     
   
+    //AKProperty Sliders For MoogLadder
+    
+    CGRect moogLadderCutoffFrame = CGRectMake(0,80, 100, 30);
+    self.cutoffSlider = [[AKSlider alloc]initWithFrame:moogLadderCutoffFrame];
+    [self.cutoffSlider setBackgroundColor:[UIColor purpleColor]];
+    self.cutoffSlider.minimumValue = 0.0;
+    self.cutoffSlider.maximumValue = 20000;
+    self.cutoffSlider.continuous = YES;
+    [self.cutoffSlider addTarget:self action:@selector(setMoogLadderCutoffSlider:) forControlEvents:UIControlEventValueChanged];
+    
+    CGRect moogLadderResonanceFrame = CGRectMake(0,140, 100, 30);
+    self.resonanceSlider = [[AKSlider alloc]initWithFrame:moogLadderResonanceFrame];
+    [self.resonanceSlider setBackgroundColor:[UIColor purpleColor]];
+    self.resonanceSlider.minimumValue = 0.0;
+    self.resonanceSlider.maximumValue = 1;
+    self.resonanceSlider.continuous = YES;
+    [self.resonanceSlider addTarget:self action:@selector(setMoogLadderResonanceSlider:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    //CGRect delaySliderLabelFrame = CGRectMake(0, 40, 100, 30);
+   // self.cutoffSlider = [[UILabel alloc]initWithFrame:moogLadderCutoffFrame];
+    [self.moogLadderView addSubview:self.cutoffSlider];
+    [self.moogLadderView addSubview:self.resonanceSlider];
+    
+    //[self.effectView addSubview:self.delaySliderLabel];
+    
+    
     
     
     // FX BUTTONS
@@ -220,19 +247,24 @@ BOOL delayInView, moogLadderInView, reverbInView;
 }
 
 
-
-
-
 -(void)setDelayTimeSlider:(UISlider*)sender
 {
-//    self.delaySlider.value = sender;
-//    
     NSLog(@"%f", sender.value);
-   
     
     self.delaySliderLabel.text = [@((float)sender.value) stringValue];
-    
     [model setDelayTimeSlider:sender.value];
+}
+
+-(void)setMoogLadderCutoffSlider:(UISlider*)sender
+{
+    NSLog(@"%f", sender.value);
+    [model setMoogCutoffSlider:sender.value];
+}
+
+-(void)setMoogLadderResonanceSlider:(UISlider*)sender
+{
+    NSLog(@"%f", sender.value);
+    [model setMoogResonanceSlider:sender.value];
 }
 
 //

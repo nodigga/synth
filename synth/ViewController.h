@@ -30,7 +30,12 @@
 @property(nonatomic) float screenWidth;
 @property(nonatomic) float screenHeight;
 
+//Delay Slider
 @property(nonatomic, strong) AKSlider *delaySlider;
+
+//MoogLadder Slider
+@property(nonatomic, strong) AKSlider *cutoffSlider;
+@property(nonatomic, strong) AKSlider *resonanceSlider;
 
 
 @property(nonatomic, strong) KeyboardViewController *keyboardViewController;

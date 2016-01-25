@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "FMOscillator.h"
 #import "VariableDelay.h"
+#import "MoogLadderFilter.h"
 
 
 @implementation Model
@@ -21,7 +22,7 @@
     FMOscillator *fmOscillator;
     NSMutableDictionary *currentNotes;
     VariableDelay *variableDelay;
-    
+    MoogLadderFilter *moogLadder;
     
 }
 
@@ -56,13 +57,17 @@
         // Instantiate Instruments
         fmOscillator = [[FMOscillator alloc]init];
         variableDelay = [[VariableDelay alloc]initWithAudioSource:[AKStereoAudio stereoFromMono:fmOscillator.auxOutput]];
+        moogLadder = [[MoogLadderFilter alloc]initWithAudioSource:variableDelay.auxOutput];
+        
         
         // Add Instruments to the Orchestra
 
         [AKOrchestra addInstrument:fmOscillator];
         [AKOrchestra addInstrument:variableDelay];
+        [AKOrchestra addInstrument:moogLadder];
         
         [variableDelay play];
+        [moogLadder play];
         
     }
     return self;
@@ -72,6 +77,16 @@
 - (void)setDelayTimeSlider:(float)delayTime
 {
     variableDelay.delayTime.value = delayTime;
+}
+
+- (void)setMoogCutoffSlider:(float)cutoff
+{
+    moogLadder.cutoffFrequency.value = cutoff;
+}
+
+-(void)setMoogResonanceSlider:(float)resonance
+{
+    moogLadder.resonance.value = resonance;
 }
 
 

@@ -6,8 +6,16 @@
 //  Copyright © 2016 nicholas.cardinal. All rights reserved.
 //
 
-#import "AKInstrument.h"
+#import "AKFoundation.h"
 
 @interface MoogLadderFilter : AKInstrument
+
+@property(nonatomic) AKInstrumentProperty *cutoffFrequency;
+@property(nonatomic) AKInstrumentProperty *resonance;
+@property(nonatomic) AKInstrumentProperty *mix;
+
+@property(nonatomic) AKStereoAudio *auxOutput;
+
+-(instancetype)initWithAudioSource:(AKStereoAudio*)audiosource;
 
 @end

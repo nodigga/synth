@@ -23,6 +23,9 @@
 
 -(void)setDelayTimeSlider:(float)delayTime;
 
+-(void)setMoogCutoffSlider:(float)cutoff;
+-(void)setMoogResonanceSlider:(float)resonance;
+
 
 
 +(id) sharedModel;

@@ -26,6 +26,7 @@
 		A8125F881C092F1D008F280D /* FMOscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = A8125F871C092F1D008F280D /* FMOscillator.m */; };
 		A8125F8B1C0930E4008F280D /* libAudioKit iOS Static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E94355A1BF473620020BB61 /* libAudioKit iOS Static.a */; };
 		A8ADA2111C27329300B830CF /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A8ADA2101C27329300B830CF /* Model.m */; };
+		A8CD05211C558E6E00173F0C /* MoogLadderFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CD05201C558E6E00173F0C /* MoogLadderFilter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		A8125F871C092F1D008F280D /* FMOscillator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMOscillator.m; path = ../FMOscillator.m; sourceTree = "<group>"; };
 		A8ADA20F1C27329300B830CF /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = SOURCE_ROOT; };
 		A8ADA2101C27329300B830CF /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = SOURCE_ROOT; };
+		A8CD051F1C558E6E00173F0C /* MoogLadderFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoogLadderFilter.h; sourceTree = "<group>"; };
+		A8CD05201C558E6E00173F0C /* MoogLadderFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoogLadderFilter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 		A8ADA20B1C2724AF00B830CF /* Synth Components */ = {
 			isa = PBXGroup;
 			children = (
+				A8CD051F1C558E6E00173F0C /* MoogLadderFilter.h */,
+				A8CD05201C558E6E00173F0C /* MoogLadderFilter.m */,
 				A8125F861C092F1D008F280D /* FMOscillator.h */,
 				A8125F871C092F1D008F280D /* FMOscillator.m */,
 				A81203291C48BFE500906A34 /* VariableDelay.h */,
@@ -422,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E6B38DA1BF46E4B00CA107A /* ViewController.m in Sources */,
+				A8CD05211C558E6E00173F0C /* MoogLadderFilter.m in Sources */,
 				5E6B38D71BF46E4B00CA107A /* AppDelegate.m in Sources */,
 				A8125F791C09268B008F280D /* ReverbViewController.m in Sources */,
 				A8ADA2111C27329300B830CF /* Model.m in Sources */,
