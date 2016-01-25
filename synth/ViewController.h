@@ -36,6 +36,7 @@
 //MoogLadder Slider
 @property(nonatomic, strong) AKSlider *cutoffSlider;
 @property(nonatomic, strong) AKSlider *resonanceSlider;
+@property(nonatomic, strong) AKSlider *moogMixSlider;
 
 
 @property(nonatomic, strong) KeyboardViewController *keyboardViewController;

@@ -109,7 +109,7 @@ BOOL delayInView, moogLadderInView, reverbInView;
   
     //AKProperty Sliders For MoogLadder
     
-    CGRect moogLadderCutoffFrame = CGRectMake(0,80, 100, 30);
+    CGRect moogLadderCutoffFrame = CGRectMake(0,40, 100, 30);
     self.cutoffSlider = [[AKSlider alloc]initWithFrame:moogLadderCutoffFrame];
     [self.cutoffSlider setBackgroundColor:[UIColor purpleColor]];
     self.cutoffSlider.minimumValue = 0.0;
@@ -117,7 +117,7 @@ BOOL delayInView, moogLadderInView, reverbInView;
     self.cutoffSlider.continuous = YES;
     [self.cutoffSlider addTarget:self action:@selector(setMoogLadderCutoffSlider:) forControlEvents:UIControlEventValueChanged];
     
-    CGRect moogLadderResonanceFrame = CGRectMake(0,140, 100, 30);
+    CGRect moogLadderResonanceFrame = CGRectMake(0,80, 100, 30);
     self.resonanceSlider = [[AKSlider alloc]initWithFrame:moogLadderResonanceFrame];
     [self.resonanceSlider setBackgroundColor:[UIColor purpleColor]];
     self.resonanceSlider.minimumValue = 0.0;
@@ -125,11 +125,21 @@ BOOL delayInView, moogLadderInView, reverbInView;
     self.resonanceSlider.continuous = YES;
     [self.resonanceSlider addTarget:self action:@selector(setMoogLadderResonanceSlider:) forControlEvents:UIControlEventValueChanged];
     
+    CGRect moogLadderMixFrame = CGRectMake(0,120, 100, 30);
+    self.moogMixSlider = [[AKSlider alloc]initWithFrame:moogLadderMixFrame];
+    [self.moogMixSlider setBackgroundColor:[UIColor purpleColor]];
+    self.moogMixSlider.minimumValue = 0.0;
+    self.moogMixSlider.maximumValue = 1;
+    self.moogMixSlider.continuous = YES;
+    [self.moogMixSlider addTarget:self action:@selector(setMoogLadderMixSlider:) forControlEvents:UIControlEventValueChanged];
+    
     
     //CGRect delaySliderLabelFrame = CGRectMake(0, 40, 100, 30);
    // self.cutoffSlider = [[UILabel alloc]initWithFrame:moogLadderCutoffFrame];
     [self.moogLadderView addSubview:self.cutoffSlider];
     [self.moogLadderView addSubview:self.resonanceSlider];
+    [self.moogLadderView addSubview:self.moogMixSlider];
+    
     
     //[self.effectView addSubview:self.delaySliderLabel];
     
@@ -265,6 +275,12 @@ BOOL delayInView, moogLadderInView, reverbInView;
 {
     NSLog(@"%f", sender.value);
     [model setMoogResonanceSlider:sender.value];
+}
+
+-(void)setMoogLadderMixSlider:(UISlider*)sender
+{
+    NSLog(@"%f", sender.value);
+    [model setMoogMixSlider:sender.value];
 }
 
 //

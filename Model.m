@@ -89,6 +89,10 @@
     moogLadder.resonance.value = resonance;
 }
 
+-(void)setMoogMixSlider:(float)mix
+{
+    moogLadder.mix.value = mix;
+}
 
 -(void)octaveDelegate:(ViewController *)sender
 {

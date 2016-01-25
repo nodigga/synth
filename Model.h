@@ -25,6 +25,7 @@
 
 -(void)setMoogCutoffSlider:(float)cutoff;
 -(void)setMoogResonanceSlider:(float)resonance;
+-(void)setMoogMixSlider:(float)mix;
 
 
 

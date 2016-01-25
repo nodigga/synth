@@ -20,7 +20,7 @@
         
         _cutoffFrequency = [self createPropertyWithValue:200 minimum:0 maximum:20000];
         _resonance = [self createPropertyWithValue:0.5 minimum:0 maximum:.99];
-        _mix = [self createPropertyWithValue:0.0 minimum:0 maximum:1.0];
+        _mix = [self createPropertyWithValue:1.0 minimum:0 maximum:1.0];
         
         AKMoogLadder *leftMoogLadder = [AKMoogLadder filterWithInput:audioSource.leftOutput];
         leftMoogLadder.cutoffFrequency = _cutoffFrequency;

@@ -48,7 +48,7 @@
         
         // Main Audio Output
         
-        AKAudioOutput *audio = [[AKAudioOutput alloc]initWithLeftAudio:leftMix rightAudio:rightMix];
+       // AKAudioOutput *audio = [[AKAudioOutput alloc]initWithLeftAudio:leftMix rightAudio:rightMix];
        // [self connect:audio];  //this needs to be placed on the last fx on the signal chain
 
 

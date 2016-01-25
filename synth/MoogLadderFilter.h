@@ -10,7 +10,7 @@
 
 @interface MoogLadderFilter : AKInstrument
 
-@property(nonatomic) AKInstrumentProperty *cutoffFrequency;
+@property(nonatomic) AKParameter *cutoffFrequency;
 @property(nonatomic) AKInstrumentProperty *resonance;
 @property(nonatomic) AKInstrumentProperty *mix;
 
