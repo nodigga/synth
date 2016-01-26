@@ -13,6 +13,7 @@
 #import "FMOscillator.h"
 #import "VariableDelay.h"
 #import "MoogLadderFilter.h"
+#import "Reverb.h"
 
 
 @implementation Model
@@ -23,6 +24,7 @@
     NSMutableDictionary *currentNotes;
     VariableDelay *variableDelay;
     MoogLadderFilter *moogLadder;
+    Reverb *reverb;
     
 }
 
@@ -57,7 +59,8 @@
         // Instantiate Instruments
         fmOscillator = [[FMOscillator alloc]init];
         variableDelay = [[VariableDelay alloc]initWithAudioSource:[AKStereoAudio stereoFromMono:fmOscillator.auxOutput]];
-        moogLadder = [[MoogLadderFilter alloc]initWithAudioSource:variableDelay.auxOutput];
+        //reverb = [[Reverb alloc]initWithAudioSource:variableDelay.auxOutput];
+        moogLadder = [[MoogLadderFilter alloc]initWithAudioSource:variableDelay.auxOutput];  //last
         
         
         // Add Instruments to the Orchestra
@@ -65,9 +68,11 @@
         [AKOrchestra addInstrument:fmOscillator];
         [AKOrchestra addInstrument:variableDelay];
         [AKOrchestra addInstrument:moogLadder];
+        [AKOrchestra addInstrument:reverb];
         
         [variableDelay play];
         [moogLadder play];
+        [reverb play];
         
     }
     return self;

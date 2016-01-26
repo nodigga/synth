@@ -27,6 +27,7 @@
 		A8125F8B1C0930E4008F280D /* libAudioKit iOS Static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E94355A1BF473620020BB61 /* libAudioKit iOS Static.a */; };
 		A8ADA2111C27329300B830CF /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A8ADA2101C27329300B830CF /* Model.m */; };
 		A8CD05211C558E6E00173F0C /* MoogLadderFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CD05201C558E6E00173F0C /* MoogLadderFilter.m */; };
+		A8CD05291C572DF900173F0C /* Reverb.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CD05281C572DF900173F0C /* Reverb.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,8 @@
 		A8ADA2101C27329300B830CF /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = SOURCE_ROOT; };
 		A8CD051F1C558E6E00173F0C /* MoogLadderFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoogLadderFilter.h; sourceTree = "<group>"; };
 		A8CD05201C558E6E00173F0C /* MoogLadderFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoogLadderFilter.m; sourceTree = "<group>"; };
+		A8CD05271C572DF900173F0C /* Reverb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reverb.h; sourceTree = "<group>"; };
+		A8CD05281C572DF900173F0C /* Reverb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reverb.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +248,8 @@
 		A8ADA20B1C2724AF00B830CF /* Synth Components */ = {
 			isa = PBXGroup;
 			children = (
+				A8CD05271C572DF900173F0C /* Reverb.h */,
+				A8CD05281C572DF900173F0C /* Reverb.m */,
 				A8CD051F1C558E6E00173F0C /* MoogLadderFilter.h */,
 				A8CD05201C558E6E00173F0C /* MoogLadderFilter.m */,
 				A8125F861C092F1D008F280D /* FMOscillator.h */,
@@ -435,6 +440,7 @@
 				5E6B38D41BF46E4B00CA107A /* main.m in Sources */,
 				5E9435621BF935FE0020BB61 /* KeyboardViewController.m in Sources */,
 				A8125F6D1C09154F008F280D /* MoogLadderViewController.m in Sources */,
+				A8CD05291C572DF900173F0C /* Reverb.m in Sources */,
 				A81203201C4615E300906A34 /* iTunes.m in Sources */,
 				A812032B1C48BFE500906A34 /* VariableDelay.m in Sources */,
 			);

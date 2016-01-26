@@ -38,6 +38,10 @@
 @property(nonatomic, strong) AKSlider *resonanceSlider;
 @property(nonatomic, strong) AKSlider *moogMixSlider;
 
+//Reverb Slider
+@property(nonatomic, strong) AKSlider *cutoffReverbSlider;
+@property(nonatomic, strong) AKSlider *feedbackSlider;
+@property(nonatomic, strong) AKSlider *reverbMixSlider;
 
 @property(nonatomic, strong) KeyboardViewController *keyboardViewController;
 @property(nonatomic, strong) MoogLadderViewController *moogLadderViewController;
