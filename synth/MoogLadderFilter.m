@@ -33,10 +33,10 @@
         [self connect:rightMoogLadder];
         
         AKMix *leftMix = [[AKMix alloc]initWithInput1:audioSource.leftOutput
-                                               input2:audioSource.rightOutput
+                                               input2:leftMoogLadder
                                               balance:_mix];
-        AKMix *rightMix = [[AKMix alloc]initWithInput1:audioSource.leftOutput
-                                                input2:audioSource.rightOutput
+        AKMix *rightMix = [[AKMix alloc]initWithInput1:audioSource.rightOutput
+                                                input2:rightMoogLadder
                                                balance:_mix];
         
         // Output to global effects processing

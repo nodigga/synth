@@ -206,7 +206,7 @@ BOOL delayInView, moogLadderInView, reverbInView;
 -(void)showEffectView
 {
   CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
-  CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+ // CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
    
     if(delayInView)
     {
@@ -215,15 +215,16 @@ BOOL delayInView, moogLadderInView, reverbInView;
     }
     else
     {
-        [UIView animateWithDuration:1.0 animations:^{self.effectView.frame = effectFrameOffScreen;}];
-        delayInView = TRUE;
+//        [UIView animateWithDuration:1.0 animations:^{self.effectView.frame = effectFrameOffScreen;}];
+//        delayInView = TRUE;
+       [self hideAllEffects];
     }
 }
 
 -(void)showMoogLadderView
 {
     CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
-    CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+   // CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
     
     if(moogLadderInView)
     {
@@ -232,8 +233,10 @@ BOOL delayInView, moogLadderInView, reverbInView;
     }
     else
     {
-        [UIView animateWithDuration:1.0 animations:^{self.moogLadderView.frame = effectFrameOffScreen;}];
-        moogLadderInView = TRUE;
+//        [UIView animateWithDuration:1.0 animations:^{self.moogLadderView.frame = effectFrameOffScreen;}];
+//        moogLadderInView = TRUE;
+        [self hideAllEffects];
+        
     }
     
 }
@@ -242,7 +245,7 @@ BOOL delayInView, moogLadderInView, reverbInView;
 -(void)showReverbView
 {
     CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
-    CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+   // CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
     
     if(reverbInView)
     {
@@ -251,8 +254,10 @@ BOOL delayInView, moogLadderInView, reverbInView;
     }
     else
     {
-        [UIView animateWithDuration:1.0 animations:^{self.reverbView.frame = effectFrameOffScreen;}];
-        reverbInView = TRUE;
+//        [UIView animateWithDuration:1.0 animations:^{self.reverbView.frame = effectFrameOffScreen;}];
+//        reverbInView = TRUE;
+
+        [self hideAllEffects];
     }
 }
 
@@ -281,6 +286,21 @@ BOOL delayInView, moogLadderInView, reverbInView;
 {
     NSLog(@"%f", sender.value);
     [model setMoogMixSlider:sender.value];
+}
+
+-(void)hideAllEffects
+{
+   // CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
+    CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+    
+    [UIView animateWithDuration:1.0 animations:^{self.reverbView.frame = effectFrameOffScreen;}];
+    [UIView animateWithDuration:1.0 animations:^{self.moogLadderView.frame = effectFrameOffScreen;}];
+    [UIView animateWithDuration:1.0 animations:^{self.effectView.frame = effectFrameOffScreen;}];
+    
+    reverbInView = TRUE;
+    moogLadderInView = TRUE;
+    delayInView = TRUE;
+    
 }
 
 //
