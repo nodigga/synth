@@ -18,6 +18,10 @@
 Model *model;
 
 BOOL delayInView, moogLadderInView, reverbInView;
+    
+    
+    CGRect effectFrame;
+    CGRect effectFrameOffScreen;
 
 }
 
@@ -37,9 +41,9 @@ BOOL delayInView, moogLadderInView, reverbInView;
     //CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI_2);
     // Do any additional setup after loading the view, typically from a nib.
     
-    delayInView = TRUE;
-    moogLadderInView = TRUE;
-    reverbInView = TRUE;
+//    delayInView = TRUE;
+//    moogLadderInView = TRUE;
+//    reverbInView = TRUE;
     
     model = [Model sharedModel];
 
@@ -47,6 +51,13 @@ BOOL delayInView, moogLadderInView, reverbInView;
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     self.view.backgroundColor = [UIColor blueColor];
    
+    
+    CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
+    
+    CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+
+    
+    
     
     // KEYBOARD VIEW
     
@@ -58,8 +69,8 @@ BOOL delayInView, moogLadderInView, reverbInView;
     [self.view addSubview:self.keyboardViewController.view];
     
     //EFFECT VIEW
-    
-    CGRect effectFrame = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+//    
+//    CGRect effectFrame = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
     
     self.effectView = [[UIView alloc] init];
     self.effectView.frame = effectFrame;
@@ -223,20 +234,16 @@ BOOL delayInView, moogLadderInView, reverbInView;
 
 -(void)showMoogLadderView
 {
-    CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
-   // CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
+  
     
-    if(moogLadderInView)
+    if(!_moogLadderView.window)
     {
         [UIView animateWithDuration:1.0 animations:^{self.moogLadderView.frame = effectFrame;}];
-        moogLadderInView = FALSE;
     }
     else
     {
-//        [UIView animateWithDuration:1.0 animations:^{self.moogLadderView.frame = effectFrameOffScreen;}];
-//        moogLadderInView = TRUE;
+        [UIView animateWithDuration:1.0 animations:^{self.moogLadderView.frame = effectFrameOffScreen;}];
         [self hideAllEffects];
-        
     }
     
 }
@@ -247,10 +254,13 @@ BOOL delayInView, moogLadderInView, reverbInView;
     CGRect effectFrame = CGRectMake(self.screenWidth/2, 0, self.screenWidth/2, self.screenHeight/2);
    // CGRect effectFrameOffScreen = CGRectMake(self.screenWidth/2 +500, 0, self.screenWidth/2, self.screenHeight/2);
     
-    if(reverbInView)
+
+    if(_moogLadderView.window)
     {
+        [self hideAllEffects];
+        
         [UIView animateWithDuration:1.0 animations:^{self.reverbView.frame = effectFrame;}];
-        reverbInView = FALSE;
+        
     }
     else
     {
